@@ -7,9 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <style>
+        @font-face {
+            font-family: Rubik;
+            src: url(<?= ROOT ?>/assets/fonts/Rubik/Rubik-Regular.ttf);
+        }
+
+
         body {
             margin: 0;
-            font-family: Poppins;
+            font-family: Rubik;
             padding: 0;
             background-color: #E2E2CF;
         }
@@ -19,7 +25,7 @@
             background: url('<?= ROOT ?>/assets/images/cashier/Rectangle6.png');
             background-repeat: no-repeat;
             background-size: cover;
-            
+
 
         }
 
@@ -121,31 +127,46 @@
         <div class="grid-item mainbg ">
             <div>
                 <div style="margin-top:5 0px;display: grid; justify-content:center ;width: 30vw;background-color: white; padding: 40px; border-radius: 10px; box-shadow: 0px 5px 10px rgba(107, 107, 107, 0.753);">
-                    <h1>Login</h1>
+                    <h1>Register</h1>
 
                     <form method="POST" enctype="multipart/form-data">
                         <label for="emID"> Employee ID</label><br>
-                        <input class="form-textbox type=" text" name="EmployeeID" id="empID" value="<?= set_value('EmployeeID')?>"><br>
+                        <input class="form-textbox type=" text" name="EmployeeID" value="<?= set_value(("EmployeeID")) ?>" id="empID"><br>
                         <label for="First Name">First Name</label><br>
-                        <input class="form-textbox type=" text" name="Firstname" id="Firstname" value="<?= set_value('Firstname')?>"><br>
+                        <input class="form-textbox type=" text" name="Firstname" value="<?= set_value(("Firstname")) ?>" id="Firstname"><br>
+                        <?php if (!empty($errors['email'])) : ?>
+                            <small><?= $errors["email"] ?></small>
+                        <?php endif; ?>
                         <label for="Last Name">Last Name</label><br>
-                        <input class="form-textbox type=" text" name="Lastname" id="Lastname" value="<?= set_value('Lastname')?>"><br>
+                        <input class="form-textbox type=" text" name="Lastname" value="<?= set_value(("Lastname")) ?>" id="Lastname"><br>
+                        <?php if (!empty($errors['email'])) : ?>
+                            <small><?= $errors["email"] ?></small>
+                        <?php endif; ?>
                         <label for="email">Email</label><br>
-                        <input class="form-textbox type=" email" name="Email" id="email" value="<?= set_value('Email')?>"><br>
+                        <input class="form-textbox type=" email" name="Email" value="<?= set_value(("Email")) ?>" id="email"><br>
+                        <?php if (!empty($errors['email'])) : ?>
+                            <small><?= $errors["email"] ?></small>
+                        <?php endif; ?>
                         <label for="password">Password</label><br>
                         <input class="form-textbox" type="password" name="Password" id="password"><br>
- </label>
+                        </label>
                         <label for="conpassword"> Confirm Password</label><br>
                         <input class="form-textbox" type="password" name="conpassword" id="conpassword"><br>
+                        <?php if (!empty($errors['email'])) : ?>
+                            <small><?= $errors["email"] ?></small>
+                        <?php endif; ?>
                         <label for="role">Role</label>
                         <select name="Role" id="role">
                             <option value="cashier">Cashier</option>
                             <option value="supplier">Supplier</option>
                         </select><br>
                         <label for="Contactno">Contact Number</label>
-                        <input class="form-textbox type=" tel" name="Contactno" id="contact"><br>
+                        <input class="form-textbox type=" tel" name="Contactno" value="<?= set_value(("Contactno")) ?>" id="contact"><br>
+                        <?php if (!empty($errors['email'])) : ?>
+                            <small><?= $errors["email"] ?></small>
+                        <?php endif; ?>
                         <label for="image">Photo</label>
-                        <input style="padding-left:10px ;" type="file" name="Image" id="photo"><br>
+                        <input style="padding-left:10px ;" type="file" name="Image" value="<?= set_value(("Image")) ?>" id="photo"><br>
 
 
                         <br><button type="submit">Login</button>

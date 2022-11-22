@@ -46,12 +46,13 @@ class Employee{
     public function insert($data)
     {
         if (!empty($this->allowedColumns)) {
-            show($data);
+            show($data); 
             foreach ($data as $key => $value) {
                 if (!in_array($key, $this->allowedColumns)) {
                     unset($data[$key]);
                 }
             }
+            show($data);
         }
 
         // show($_FILES);
