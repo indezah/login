@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Sign Up</title>
     <style>
         @font-face {
             font-family: Rubik;
@@ -34,7 +34,7 @@
             align-items: center;
             width: 100vw;
             /* padding: 30px; */
-            /* margin-top: 30px; */
+            margin-top: 30px;
 
         }
 
@@ -73,14 +73,27 @@
             display: grid;
             justify-content: center;
             align-items: center;
-            margin-top: 100px;
+
+        }
+
+        div {
+            box-sizing: border-box;
         }
 
         form input {
-            margin-bottom: 20px;
-            height: 30px;
-            width: 30vw;
+            box-sizing: border-box;
+            height: 35px;
+            width: 100%;
             border-radius: 5px;
+            margin-top: 5px;
+            border: 1px solid #18242279;
+        }
+
+        select {
+            height: 35px;
+            width: 100%;
+            border-radius: 5px;
+            margin-top: 5px;
             border: 1px solid #18242279;
         }
 
@@ -95,6 +108,8 @@
         }
 
         label {
+            font-size: small;
+            font-weight: 600;
             color: rgb(59, 59, 59);
         }
 
@@ -105,71 +120,126 @@
         .form-textbox {
             padding-left: 10px;
         }
+
+        .form-error {
+            /* display: none; */
+            color: red;
+        }
     </style>
 </head>
 
 <body>
     <div class="contactbar">
-        <nav class="nav" style="display: grid; grid-template-columns:8fr 2fr">
-            <img src="<?= ROOT ?>/assets/images/cashier/WOODWORKS.png" alt="">
-            <div>
+        <nav class="nav">
+
+
+
+
+            <a style="height: auto;" href="#"><img style="color:white; width:20px;" src="<?= ROOT ?>/assets/images/cashier/arrow-left-solid.svg" alt=""></a>
+            <img src="<?= ROOT ?>/assets/images/cashier/WOODWORKS.svg" alt="">
+
+
+            <!-- <div>
                 <ul>
                     <li>Login</li>
                     <li>Register</li>
                     <li>Cart</li>
 
                 </ul>
-            </div>
+            </div> -->
         </nav>
     </div>
     <div class="main">
         <div class="grid-item leftpanel"></div>
         <div class="grid-item mainbg ">
             <div>
-                <div style="margin-top:5 0px;display: grid; justify-content:center ;width: 30vw;background-color: white; padding: 40px; border-radius: 10px; box-shadow: 0px 5px 10px rgba(107, 107, 107, 0.753);">
-                    <h1>Register</h1>
+                <div style="display: block; justify-content:center ;width: auto;background-color: white; padding: 30px; border-radius: 10px; box-shadow: 0px 5px 10px rgba(107, 107, 107, 0.753); transition:all 1s;">
+                    <!-- <h1>Register</h1> -->
 
-                    <form method="POST" enctype="multipart/form-data">
-                        <label for="emID"> Employee ID</label><br>
-                        <input class="form-textbox type=" text" name="EmployeeID" value="<?= set_value(("EmployeeID")) ?>" id="empID"><br>
-                        <label for="First Name">First Name</label><br>
-                        <input class="form-textbox type=" text" name="Firstname" value="<?= set_value(("Firstname")) ?>" id="Firstname"><br>
-                        <?php if (!empty($errors['email'])) : ?>
-                            <small><?= $errors["email"] ?></small>
-                        <?php endif; ?>
-                        <label for="Last Name">Last Name</label><br>
-                        <input class="form-textbox type=" text" name="Lastname" value="<?= set_value(("Lastname")) ?>" id="Lastname"><br>
-                        <?php if (!empty($errors['email'])) : ?>
-                            <small><?= $errors["email"] ?></small>
-                        <?php endif; ?>
-                        <label for="email">Email</label><br>
-                        <input class="form-textbox type=" email" name="Email" value="<?= set_value(("Email")) ?>" id="email"><br>
-                        <?php if (!empty($errors['email'])) : ?>
-                            <small><?= $errors["email"] ?></small>
-                        <?php endif; ?>
-                        <label for="password">Password</label><br>
-                        <input class="form-textbox" type="password" name="Password" id="password"><br>
-                        </label>
-                        <label for="conpassword"> Confirm Password</label><br>
-                        <input class="form-textbox" type="password" name="conpassword" id="conpassword"><br>
-                        <?php if (!empty($errors['email'])) : ?>
-                            <small><?= $errors["email"] ?></small>
-                        <?php endif; ?>
-                        <label for="role">Role</label>
-                        <select name="Role" id="role">
-                            <option value="cashier">Cashier</option>
-                            <option value="supplier">Supplier</option>
-                        </select><br>
-                        <label for="Contactno">Contact Number</label>
-                        <input class="form-textbox type=" tel" name="Contactno" value="<?= set_value(("Contactno")) ?>" id="contact"><br>
-                        <?php if (!empty($errors['email'])) : ?>
-                            <small><?= $errors["email"] ?></small>
-                        <?php endif; ?>
-                        <label for="image">Photo</label>
-                        <input style="padding-left:10px ;" type="file" name="Image" value="<?= set_value(("Image")) ?>" id="photo"><br>
+                    <form method="POST">
+                        <div class="name-form" style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap:10px; grid-row-gap:15px">
+
+                            <div>
+                                <label for="First Name">First Name</label>
+                                <input class="form-textbox type=" text" name="Firstname" value="<?= set_value(("Firstname")) ?>" id="Firstname"><br>
+                                <?php if (!empty($errors['Firstname'])) : ?>
+                                    <small class="form-error"><?= $errors["Firstname"] ?></small>
+                                <?php endif; ?>
+                            </div>
+                            <div>
+                                <label for="Last Name">Last Name</label>
+                                <input class="form-textbox type=" text" name="Lastname" value="<?= set_value(("Lastname")) ?>" id="Lastname"><br>
+                                <?php if (!empty($errors['Lastname'])) : ?>
+                                    <small class="form-error"><?= $errors["Lastname"] ?></small>
+                                <?php endif; ?>
+                            </div>
+
+                            <div>
+
+                                <label for="emID"> Supplier ID</label><br>
+                                <input class="form-textbox type=" text" name="SupplierID" value="<?= set_value(("SupplierID")) ?>" id="empID"><br>
+                                <?php if (!empty($errors['SupplierID'])) : ?>
+                                    <small class="form-error"><?= $errors["SupplierID"] ?></small>
+                                <?php endif; ?>
 
 
-                        <br><button type="submit">Login</button>
+                            </div>
+                            <div>
+                                <label for="email">Email</label><br>
+                                <input class="form-textbox type=" email" name="Email" value="<?= set_value(("Email")) ?>" id="email"><br>
+                                <?php if (!empty($errors['Email'])) : ?>
+                                    <small class="form-error"><?= $errors["Email"] ?></small>
+                                <?php endif; ?>
+                            </div>
+
+
+
+
+
+                            <div style="grid-column-start:1; grid-column-end:3">
+                                <label for="password">Password</label><br>
+                                <input style="width: 100%;" class="form-textbox" type="password" name="Password" id="password"><br>
+                            </div>
+                            <div style="grid-column-start:1; grid-column-end:3">
+                                <label for="conpassword"> Confirm Password</label><br>
+                                <input style="width: 100%;" class="form-textbox" type="password" name="conpassword" id="conpassword"><br>
+                                <?php if (!empty($errors['Password'])) : ?>
+                                    <small class="form-error"><?= $errors["Password"] ?></small>
+                                <?php endif; ?>
+                            </div>
+
+                            <!-- <div>
+                                <label for="role">Role</label><br>
+                                <select name="Role" id="role">
+                                    <option value="cashier">Cashier</option>
+                                    <option value="supplier">Supplier</option>
+                                </select><br>
+                                <?php if (!empty($errors['Role'])) : ?>
+                                    <small class="form-error"><?= $errors["Role"] ?></small>
+                                <?php endif; ?>
+                            </div> -->
+
+                            <div>
+                                <label for="Contactno">Contact Number</label>
+                                <input class="form-textbox type=" tel" name="Contactno" value="<?= set_value(("Contactno")) ?>" id="contact"><br>
+                                <?php if (!empty($errors['Contactno'])) : ?>
+                                    <small class="form-error"><?= $errors["Contactno"] ?></small>
+                                <?php endif; ?>
+                            </div>
+                            <div>
+                                <label for="Contactno">Company Name</label>
+                                <input class="form-textbox type=" tel" name="Company_name" value="<?= set_value(("Company_name")) ?>" id="contact"><br>
+                                <?php if (!empty($errors['Company_name'])) : ?>
+                                    <small class="form-error"><?= $errors["Company_name"] ?></small>
+                                <?php endif; ?>
+                            </div>
+
+                            <div style="grid-column-start:1 ; grid-column-end:3">
+
+                                <button type="submit">Sign Up</button>
+
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>

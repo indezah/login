@@ -7,8 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <style>
-      
-
         body {
             margin: 0;
             font-family: Poppins;
@@ -18,7 +16,7 @@
 
         .leftpanel {
 
-            background: url('<?=ROOT?>/assets/images/cashier/Rectangle6.png');
+            background: url('<?= ROOT ?>/assets/images/cashier/Rectangle6.png');
             background-repeat: no-repeat;
             background-size: cover;
 
@@ -52,7 +50,8 @@
             justify-content: space-between;
             padding-right: 5vw;
         }
-        .nav li{
+
+        .nav li {
             padding-left: 3vw;
         }
 
@@ -106,7 +105,7 @@
 <body>
     <div class="contactbar">
         <nav class="nav" style="display: grid; grid-template-columns:8fr 2fr">
-            <img src="<?=ROOT?>/assets/images/cashier/WOODWORKS.png" alt="">
+            <img src="<?= ROOT ?>/assets/images/cashier/WOODWORKS.png" alt="">
             <div>
                 <ul>
                     <li>Login</li>
@@ -121,20 +120,23 @@
         <div class="grid-item leftpanel"></div>
         <div class="grid-item mainbg ">
             <div>
-                <div
-                    style="margin-top:50px;display: grid; justify-content:center ;width: 30vw;background-color: white; padding: 40px; border-radius: 10px; box-shadow: 0px 5px 10px rgba(107, 107, 107, 0.753);">
+                <div style="margin-top:50px;display: grid; justify-content:center ;width: 30vw;background-color: white; padding: 40px; border-radius: 10px; box-shadow: 0px 5px 10px rgba(107, 107, 107, 0.753);">
                     <h1>Login</h1>
 
+                    <?php if (message()) : ?>
+                        <div> <?= message('', true) ?> </div>
+                    <?php endif; ?>
                     <form action="" method="post" novalidate>
                         <label for="email">Email</label><br>
-                        <input style="padding-left:10px ;" type="email" value="<?= set_value('email')?>" name="email" id="email" required><br>
-                        <?php if(!empty($errors['email'])):?>
-                            <small><?=$errors["email"]?></small>
-                        <?php endif;?>
+                        <input style="padding-left:10px ;" type="email" value="<?= set_value('Email') ?>" name="Email" id="email" required><br>
+                       
                         <br>
                         <br>
                         <label for="password">Password</label><br>
-                        <input style="padding-left:10px ;" type="password" name="password" id="password" value="<?= set_value('email')?>" required><br>
+                        <input style="padding-left:10px ;" type="password" name="Password" id="Password" value="<?= set_value('Password') ?>" required>
+                        <?php if (!empty($errors['Email'])) : ?>
+                            <small><?= $errors["Email"] ?></small>
+                        <?php endif; ?>
                         <br><button type="submit">Login</button>
                     </form>
                 </div>

@@ -1,22 +1,23 @@
 <?php
 
-class Login2 extends Controller{
-    public function index(){
+class Login2 extends Controller
+{
+    public function index()
+    {
         $data['errors'] = [];
-        $employee = new Employee();
-        if($_SERVER['REQUEST_METHOD'] == 'POST'){
-            $row = $employee->where('Email',$_POST['email']);
+        $employee = new SupplierModel();
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $row = $employee->first(['Email' => $_POST['Email']]);
 
-            if($row){
-//                show($row);
-                if($row[0]->Password === $_POST['password']){
-                    $_SESSION['USER_DATA'] = $row[0];
-//                    show($_SESSION);
-                    $this->redirect("/home");
+            if ($row) {
+                if (password_verify($_POST['Password'], $row->Password)) {
+                   Auth::authenticate($row);
+                    redirect('home');
                 }
             }
-            $data['errors']['email'] = "Wrong email or password";
+            $data['errors']['Email'] = "Wrong Email or Password";
         }
-        $this->view('login2',$data);
+
+        $this->view('login2', $data);
     }
 }
